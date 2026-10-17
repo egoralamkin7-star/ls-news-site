@@ -8,54 +8,28 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600&display=swap');
 
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: #0a0a0a; color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow: hidden;
         }
 
         /* --- ЭКРАН 1: ОБЛОЖКА --- */
         #cover-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease, transform 1s ease;
-            z-index: 10;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 1s ease, transform 1s ease; z-index: 10;
             background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 80%);
         }
-
         .header-titles { text-align: center; margin-bottom: 40px; z-index: 2; }
         .header-titles h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0 0 10px 0; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
         .header-titles p { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 8px; margin: 0; }
-
         .cover-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 50px; align-items: center; width: 100%; max-width: 1300px; padding: 0 40px; box-sizing: border-box; }
-
-        /* Карточки на обложке */
-        .cover-news { 
-            text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 30px; min-height: 250px; border: 1px solid #2a2a2a; border-radius: 12px; 
-            transition: all 0.4s ease; position: relative; overflow: hidden; 
-            /* ДОБАВЛЕН ГРАДИЕНТ-ЗАГЛУШКА, ЕСЛИ НЕТ КАРТИНКИ */
-            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-            background-size: cover; background-position: center;
-        }
+        .cover-news { text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; min-height: 250px; border: 1px solid #2a2a2a; border-radius: 12px; transition: all 0.4s ease; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #151515; }
         .cover-news::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%); z-index: 1; transition: opacity 0.4s ease; }
         .cover-news:hover { transform: translateY(-5px); border-color: #d4af37; box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15); }
         .cover-news:hover::after { opacity: 0.8; }
         .cover-tag { position: relative; z-index: 2; color: #ff4444; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: inline-block; }
         .cover-news h3 { position: relative; z-index: 2; font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; line-height: 1.3; color: #fff; }
-        
-        /* Подсказка для названий файлов */
         .file-hint { position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 0.7rem; color: #666; background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px;}
 
         .center-btn-container { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
@@ -75,7 +49,6 @@
         #news-page { opacity: 0; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #0f0f0f; transition: opacity 1s ease 0.5s; overflow-y: auto; scroll-behavior: smooth; }
         .fade-in { opacity: 1 !important; pointer-events: auto !important; }
 
-        /* --- НАВИГАЦИЯ --- */
         .main-nav { position: sticky; top: 0; width: 100%; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #333; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; box-sizing: border-box; }
         .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: #d4af37; text-decoration: none; letter-spacing: 2px; }
         .nav-links { display: flex; gap: 30px; }
@@ -90,6 +63,10 @@
         
         .news-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px 20px; }
 
+        #hero-section { display: block; margin-bottom: 40px; cursor: pointer; border: 1px solid #333; border-radius: 8px; overflow: hidden; background: #151515; transition: transform 0.3s ease, border-color 0.3s ease; }
+        #hero-section:hover { border-color: #d4af37; }
+        .hero-image { width: 100%; height: 400px; object-fit: cover; border-bottom: 1px solid #333; display: block; filter: brightness(0.7); }
+
         .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
         .news-card { border: 1px solid #333; border-radius: 8px; overflow: hidden; background: #151515; transition: transform 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; cursor: pointer; }
         .news-card:hover { transform: translateY(-5px); border-color: #d4af37; }
@@ -103,7 +80,6 @@
         .news-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 10px 0; line-height: 1.3; }
         .news-card p { color: #999; font-size: 0.95rem; line-height: 1.5; margin-bottom: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
 
-        /* --- БЛОК СОЦИССЛЕДОВАНИЯ --- */
         .social-study { margin-top: 60px; background: #141414; border: 1px solid #333; border-radius: 12px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); scroll-margin-top: 100px; }
         .social-study h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 15px; }
         .study-meta { color: #d4af37; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
@@ -128,7 +104,6 @@
         .editorial-opinion p { color: #bbb; line-height: 1.7; }
         .editorial-opinion .signature { text-align: right; font-style: italic; color: #d4af37; margin-top: 20px; font-weight: bold; }
 
-        /* --- МОДАЛЬНОЕ ОКНО --- */
         .article-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); z-index: 100; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .article-modal.active { opacity: 1; pointer-events: auto; }
         .article-content { background: #121212; border: 1px solid #333; border-radius: 12px; width: 90%; max-width: 900px; max-height: 90vh; overflow-y: auto; padding: 40px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
@@ -139,8 +114,6 @@
         .article-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
         .article-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; border: 1px solid #333; background: #222; }
         .article-gallery.single { grid-template-columns: 1fr; }
-        
-        #hero-section { scroll-margin-top: 100px; }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -148,7 +121,6 @@
 
     <audio id="click-sound" src="click.mp3"></audio>
 
-    <!-- ЭКРАН 1: ОБЛОЖКА -->
     <div id="cover-screen">
         <div class="header-titles">
             <h1>Los Santos News</h1>
@@ -157,7 +129,6 @@
 
         <div class="cover-grid">
             <a href="#" class="cover-news" style="background-image: url('news1_1.jpg');" onclick="openArticle(1)">
-                <!-- ПОДСКАЗКА НАЗВАНИЯ ФАЙЛА -->
                 <div class="file-hint">Файл: news1_1.jpg</div>
                 <span class="cover-tag">⚠ Срочно</span>
                 <h3>Война синдикатов у стен редакции: перестрелка в опасном районе</h3>
@@ -173,7 +144,6 @@
             </div>
 
             <a href="#" class="cover-news" style="background-image: url('news2_1.jpg');" onclick="openArticle(2)">
-                <!-- ПОДСКАЗКА НАЗВАНИЯ ФАЙЛА -->
                 <div class="file-hint">Файл: news2_1.jpg</div>
                 <span class="cover-tag" style="color: #d4af37;">Криминал</span>
                 <h3>Дерзкий налет на Ammu-Nation: вынесен весь оружейный арсенал</h3>
@@ -187,7 +157,6 @@
         </div>
     </div>
 
-    <!-- ЭКРАН 2: НОВОСТИ -->
     <div id="news-page">
         
         <nav class="main-nav">
@@ -206,10 +175,8 @@
         </div>
 
         <div class="news-container">
-            <div id="hero-section" class="news-card" style="display: block; margin-bottom: 40px; cursor: pointer;" onclick="openArticle(1)">
-                <div class="image-gallery" style="height: 400px; border-bottom: 1px solid #333;">
-                    <img src="news1_1.jpg" alt="Война синдикатов" style="width: 100%; object-fit: cover; filter: brightness(0.7);">
-                </div>
+            <div id="hero-section" onclick="openArticle(1)">
+                <img src="news1_1.jpg" class="hero-image" alt="Война синдикатов">
                 <div class="news-card-content" style="padding: 30px;">
                     <div class="tag" style="color: #ff4444; font-size: 1rem;">⚠ Срочно / Криминал</div>
                     <h3 style="font-size: 2.5rem; margin-bottom: 15px;">Война преступных синдикатов разгорелась возле офиса LS News</h3>
